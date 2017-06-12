@@ -1,0 +1,39 @@
+[{
+    "_id": 1,
+    "uid": 123456789,
+    "name": "TODOS 1",
+    "todo-items": [{
+        "_id": 1000,
+        "todo": "todo 1",
+        "isDone": false
+      },
+      {
+        "_id": 1001,
+        "todo": "todo 2",
+        "isDone": true
+      }
+    ]
+  },
+  {
+    "_id": 2,
+    "uid": 123456789,
+    "name": "TODOS 2",
+    "todo-items": [{
+        "_id": 1002,
+        "todo": "todo 3",
+        "isDone": false
+      },
+      {
+        "_id": 1003,
+        "todo": "todo 4",
+        "isDone": true
+      }
+    ]
+  },
+  {
+    "_id": 3,
+    "uid": 987654321,
+    "name": "OTHER TODOS",
+    "todo-items": []
+  }
+]

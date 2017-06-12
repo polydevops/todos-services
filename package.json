@@ -1,0 +1,28 @@
+{
+  "name": "todos-services",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "mocha --recursive"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "firebase-admin": "^4.2.1",
+    "jade": "~1.11.0",
+    "mongodb": "^2.2.26",
+    "morgan": "~1.8.1",
+    "pg": "^6.1.5",
+    "rx": "^4.1.0",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "jshint": "^2.9.4",
+    "mocha": "^3.3.0",
+    "sinon": "^2.2.0"
+  }
+}
