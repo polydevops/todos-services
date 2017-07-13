@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const service = require('../../todo-item/todo-item-service');
+const service = require('../../todo/todo-item-service');
 const dataHelper = require('../data/helper');
 
 const nosql = require('../../data/nosql');
