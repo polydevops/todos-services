@@ -12,7 +12,7 @@ firebase.initializeApp({
 middleware.verifyUser = function(req, res, next) {
   firebase
     .auth()
-    .verifyTokenId(req.get('Authorization'))
+    .verifyIdToken(req.get('Authorization'))
     .then(function(uid) {
       req.uid = uid;
       next();
