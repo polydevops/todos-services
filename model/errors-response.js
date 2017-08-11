@@ -1,3 +1,3 @@
-module.exports = function() {
-  this.errors = Array.from(this.arguments);
-}
+module.exports = function(errors) {
+  this.errors = errors;
+};

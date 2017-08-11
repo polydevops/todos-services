@@ -1,6 +1,6 @@
 let key = require('../config/service-account-key.json');
 let firebase = require('firebase-admin');
-let Error = require('../model/error');
+let ServiceError = require('../model/error');
 let ErrorResponse = require('../model/errors-response');
 
 let middleware = {};
@@ -20,7 +20,7 @@ middleware.verifyUser = function(req, res, next) {
       next();
     })
     .catch(function(err) {
-      res.status(401).json(new ErrorResponse(new Error("AuthError", `Failed to verify user: ${err}`)));
+      res.status(401).json(new ErrorResponse([new ServiceError("AuthError", `Failed to verify user: ${err}`)]));
     });
 };
 

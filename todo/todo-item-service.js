@@ -34,7 +34,7 @@ service.updateItem = function(todosId, item) {
         }
       }, {
         upsert: false
-      })
+      });
     })
     .then(result => {
       return Promise.resolve(result.result.n);
@@ -48,8 +48,8 @@ service.deleteItem = function(itemId) {
     .deleteOne({_Id: itemId})
     .then(result => {
       return Promise.resolve(result.deletedCount);
-    })
-  })
-}
+    });
+  });
+};
 
 module.exports = service;
