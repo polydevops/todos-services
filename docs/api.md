@@ -1,5 +1,11 @@
 # API #
 
+### Authorization ###
+This application is authorized via a json web token (jwt) generated from firebase. That token is provided to the server as the following header:
+
+`Authorization: [insert_token]`
+
+
 ### GET /todos ###
 
 Description:
