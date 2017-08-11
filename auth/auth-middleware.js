@@ -18,7 +18,7 @@ middleware.verifyUser = function(req, res, next) {
       next();
     })
     .catch(function(err) {
-      res.status(401).json({msg: "Failed to verify user", err: err});
+      res.status(401).json({error: {msg: "Failed to verify user", err: err}});
     });
 };
 
