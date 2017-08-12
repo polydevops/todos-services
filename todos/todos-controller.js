@@ -9,9 +9,7 @@ controller.getTodos = function(req, res, next) {
   todosService
     .getTodos(req.uid)
     .then(todos => {
-      res.status(200).json(new DataResponse({
-        todos: todos
-      }));
+      res.status(200).json(new DataResponse(todos));
     })
     .catch(err => {
       let errorResponse = new ErrorResponse([new ServiceError("GetTodosError", `Failed to get todos: ${err}`)]);
