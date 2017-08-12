@@ -1,4 +1,8 @@
-let service = require('./todo-item-service');
+const service = require('./todo-item-service');
+const DataResponse = require('../model/data-response');
+const ServiceError = require('../model/error');
+const ErrorResponse = require('../model/errors-response');
+
 
 let controller = {};
 
@@ -6,13 +10,11 @@ controller.createTodo = function(req, res, next) {
   service
   .addItem(req.body.todosId, req.body.todo)
   .then(insertedId => {
-    res.status(201).json({_id: insertedId});
+    res.status(201).json(new DataResponse({_id: insertedId}));
   })
   .catch(err => {
-    res.status(500).json({
-      msg: "Failed to create todo.",
-      err: err
-    });
+    let errorResponse = new ErrorResponse([new ServiceError("CreateTodoItemError", `Failed to create todo-item: ${err}`)]);
+    res.status(500).json(errorResponse);
   });
 };
 
@@ -25,10 +27,8 @@ controller.updateTodo = function(req, res, next) {
     }
   })
   .catch(err => {
-    res.status(500).json({
-      msg: "Failed to update todo.",
-      err: err
-    });
+    let errorResponse = new ErrorResponse([new ServiceError("UpdateTodoItemError", `Failed to update todo-item: ${err}`)]);
+    res.status(500).json(errorResponse);
   });
 };
 
@@ -41,10 +41,8 @@ controller.deleteTodo = function(req, res, next) {
     }
   })
   .catch(err => {
-    res.status(500).json({
-      msg: "Failed to update todo.",
-      err: err
-    });
+    let errorResponse = new ErrorResponse([new ServiceError("DeleteTodoItemError", `Failed to delete todo-item: ${err}`)]);
+    res.status(500).json(errorResponse);
   });
 };
 
