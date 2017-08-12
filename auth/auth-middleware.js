@@ -16,7 +16,7 @@ middleware.verifyUser = function(req, res, next) {
     .auth()
     .verifyIdToken(req.get('Authorization'))
     .then(function(uid) {
-      req.uid = uid;
+      req.uid = uid.uid;
       next();
     })
     .catch(function(err) {
