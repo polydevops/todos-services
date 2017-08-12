@@ -17,6 +17,8 @@ service.createTodos = function(uid, todos) {
   return nosql
     .get('todos')
     .then(collection => {
+      todos.uid = uid;
+      console.log(todos);
       return collection.insertOne(todos);
     })
     .then(result => {
