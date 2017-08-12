@@ -10,7 +10,8 @@ This application is authorized via a json web token (jwt) generated from firebas
 
 For the response spec I chose a loose interpretation of the JSON API spec. It basically follows this format:
 
-{ data: [ {object}, ... ] }
+`{ data: [ {object}, ... ] } // for arrays`
+`{ data: {object} } // for objects`
 
 {
   errors: [

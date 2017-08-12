@@ -1,20 +1,21 @@
 const todosService = require('./todos-service');
-
+const DataResponse = require('../model/data-response');
 let controller = {};
 
 controller.getTodos = function(req, res, next) {
   todosService
     .getTodos(req.uid)
     .then(todos => {
-      res.status(200).json({
-          todos: todos
-        })
-        .catch(err => {
-          res.status(500).json({
-            msg: "Failed to retrieve todos.",
-            err: err
-          });
-        });
+      console.log(todos);
+      res.status(200).json(new DataResponse({
+        todos: todos
+      }));
+    })
+    .catch(err => {
+      res.status(500).json({
+        msg: "Failed to retrieve todos.",
+        err: err
+      });
     });
 };
 
