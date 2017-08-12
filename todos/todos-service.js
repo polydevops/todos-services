@@ -1,4 +1,5 @@
 let nosql = require('../data/nosql');
+let ObjectId = require('mongodb').ObjectID;
 
 let service = {};
 
@@ -16,7 +17,7 @@ service.createTodos = function(uid, todos) {
   return nosql
     .get('todos')
     .then(collection => {
-      todos._id = null;
+      todos._id = new ObjectId();
       todos.uid = uid;
       console.log(todos);
       return collection.insertOne(todos);
