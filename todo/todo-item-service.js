@@ -1,5 +1,5 @@
 let nosql = require('../data/nosql');
-let ObjectId = require('mongodb').ObjectId;
+let ObjectId = require('mongodb').ObjectID;
 
 let service = {};
 

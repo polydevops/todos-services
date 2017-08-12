@@ -6,7 +6,6 @@ service.getTodos = function(uid) {
   return nosql
     .get('todos')
     .then(collection => {
-      console.log(collection);
       return collection.find({
         "uid": uid
       }).toArray();
@@ -17,6 +16,7 @@ service.createTodos = function(uid, todos) {
   return nosql
     .get('todos')
     .then(collection => {
+      todos._id = null;
       todos.uid = uid;
       console.log(todos);
       return collection.insertOne(todos);
