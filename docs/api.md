@@ -71,7 +71,7 @@ Payload:
 Response:
 
 ```
-data: [{_id: 1}]
+data: {_id: 1}
 ```
 
 ## POST /todos/:id
@@ -144,7 +144,7 @@ Payload:
 Response:
 
 ```
-data: [{id: 201}]
+data: {id: 201}
 ```
 
 ## POST /todo/:id
