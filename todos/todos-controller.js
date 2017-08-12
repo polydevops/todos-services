@@ -21,7 +21,7 @@ controller.getTodos = function(req, res, next) {
 
 controller.createTodos = function(req, res, next) {
   todosService
-    .createTodos(req.uid, req.body.todos)
+    .createTodos(req.uid, req.body)
     .then(id => {
       res.status(201).json(new DataResponse({
         id: id
