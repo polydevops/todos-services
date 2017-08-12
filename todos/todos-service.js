@@ -6,6 +6,7 @@ service.getTodos = function(uid) {
   return nosql
     .get('todos')
     .then(collection => {
+      console.log(collection);
       return collection.find({
         "uid": uid
       }).toArray();
