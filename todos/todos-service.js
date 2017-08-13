@@ -24,6 +24,7 @@ service.createTodos = function(uid, todos) {
       return collection.insertOne(todos);
     })
     .then(result => {
+      console.log(result);
       if (result.nInserted) {
         console.log("inserted");
         return Promise.resolve(todos._id);
