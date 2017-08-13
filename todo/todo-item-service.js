@@ -4,7 +4,7 @@ let ObjectId = require('mongodb').ObjectID;
 let service = {};
 
 service.addItem = function(todosId, item) {
-  item._id = ObjectId();
+  item._id = new ObjectId();
   return nosql.get('todos')
     .then(collection => {
       return collection
