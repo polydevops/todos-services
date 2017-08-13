@@ -9,13 +9,13 @@ service.addItem = function(todosId, item) {
     .then(collection => {
       return collection
         .update({
-          _id: ObjectId(todosId)
+          "_id": ObjectId(todosId)
         }, {
           $push: {
             "todoItems": item
           }
         }, {
-          upsert: true
+          upsert: false
         })
         .then(result => {
           return (result.result.n) ? Promise.resolve(item._id) : Promise.resolve(0);
@@ -27,7 +27,8 @@ service.updateItem = function(todosId, item) {
   return nosql.get('todos')
     .then(collection => {
       return collection.update({
-        "todoItems._id": ObjectId(todosId)
+        "_id": todosId,
+        "todoItems._id": ObjectId(item._id)
       }, {
         $set: {
           "todo": item.todo,
