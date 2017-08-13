@@ -5,6 +5,7 @@ let service = {};
 
 service.addItem = function(todosId, item) {
   item._id = new ObjectId();
+  console.log(todosId);
   return nosql.get('todos')
     .then(collection => {
       return collection
