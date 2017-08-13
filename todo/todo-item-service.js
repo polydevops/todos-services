@@ -12,7 +12,7 @@ service.addItem = function(todosId, item) {
           _id: ObjectId(todosId)
         }, {
           $set: {
-            "todo-items": item
+            "todoItems": item
           }
         }, {
           upsert: true
