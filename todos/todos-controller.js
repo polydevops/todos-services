@@ -10,7 +10,6 @@ controller.getTodos = function(req, res, next) {
     .getTodos(req.uid)
     .then(todos => {
       let response = new DataResponse(todos);
-      console.log(response);
       res.status(200).json(response);
     })
     .catch(err => {
@@ -34,7 +33,6 @@ controller.createTodos = function(req, res, next) {
 };
 
 controller.updateTodosName = function(req, res, next) {
-  console.log(req.uid);
   todosService.updateTodosName(req.uid, req.params.id, req.body.name)
     .then(success => {
       if (success) res.status(204).end();

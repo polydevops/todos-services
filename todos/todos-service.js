@@ -20,15 +20,12 @@ service.createTodos = function(uid, todos) {
       todos.uid = uid;
       createTodosId(todos);
       createTodoItemIds(todos.todoItems);
-      console.log(todos);
       return collection.insertOne(todos);
     })
     .then(result => {
       if (result.insertedCount) {
-        console.log("inserted");
         return Promise.resolve(todos._id);
       } else {
-        console.log("not inserted");
         return Promise.resolve(null);
       }
 
@@ -60,7 +57,6 @@ service.updateTodosName = function(uid, id, newName) {
       });
     })
     .then(result => {
-      console.log(result);
       return Promise.resolve(result.modifiedCount);
     });
 };
