@@ -50,7 +50,6 @@ service.updateTodosName = function(uid, id, newName) {
   return nosql
     .get('todos')
     .then(collection => {
-      console.log(`new name -> ${newName}`);
       return collection.updateOne({
         uid: uid,
         _id: id
@@ -61,6 +60,7 @@ service.updateTodosName = function(uid, id, newName) {
       });
     })
     .then(result => {
+      console.log(result);
       return Promise.resolve(result.modifiedCount);
     });
 };
