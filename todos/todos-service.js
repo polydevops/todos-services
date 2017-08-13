@@ -51,11 +51,11 @@ service.updateTodosName = function(uid, id, newName) {
     .get('todos')
     .then(collection => {
       return collection.updateOne({
-        uid: uid,
-        _id: id
+        "uid": uid,
+        "_id": id
       }, {
         $set: {
-          name: newName
+          "name": newName
         }
       });
     })
