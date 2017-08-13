@@ -66,11 +66,12 @@ service.deleteTodos = function(uid, id) {
     .get('todos')
     .then(collection => {
       return collection.deleteOne({
-        uid: uid,
-        _id: id
+        "uid": uid,
+        "_id": ObjectId(id)
       });
     })
     .then(result => {
+      console.log('delete count -> ' + result.deletedCount);
       return Promise.resolve(result.deletedCount);
     });
 };
