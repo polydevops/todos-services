@@ -23,6 +23,7 @@ service.createTodos = function(uid, todos) {
       return collection.insertOne(todos);
     })
     .then(result => {
+      console.log(`insertedId -> ${result.insertedId}`);
       return Promise.resolve(result.insertedId);
     });
 };
