@@ -34,9 +34,10 @@ controller.createTodos = function(req, res, next) {
 };
 
 controller.updateTodosName = function(req, res, next) {
+  console.log(req.params);
   todosService.updateTodosName(req.uid, req.params.id, req.body.name)
     .then(success => {
-      if (success) res.status(200).end();
+      if (success) res.status(204).end();
     })
     .catch(err => {
       let errorResponse = new ErrorResponse([new ServiceError("UpdateTodosError", `Failed to update todos: ${err}`)]);
