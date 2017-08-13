@@ -11,7 +11,7 @@ service.addItem = function(todosId, item) {
         .update({
           "_id": ObjectId(todosId)
         }, {
-          $addToSet: {
+          $push: {
             "todoItems": item
           }
         }, {
