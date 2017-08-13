@@ -8,7 +8,7 @@ service.addItem = function(todosId, item) {
   return nosql.get('todos')
     .then(collection => {
       return collection
-        .update({
+        .insertOne({
           "_id": ObjectId(todosId)
         }, {
           $push: {
