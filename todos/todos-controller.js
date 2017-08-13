@@ -22,9 +22,9 @@ controller.getTodos = function(req, res, next) {
 controller.createTodos = function(req, res, next) {
   todosService
     .createTodos(req.uid, req.body)
-    .then(id => {
+    .then(_id => {
       res.status(201).json(new DataResponse({
-        id: id
+        _id: _id
       }));
     })
     .catch(err => {

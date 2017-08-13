@@ -25,8 +25,10 @@ service.createTodos = function(uid, todos) {
     })
     .then(result => {
       if (result.nInserted) {
+        console.log("inserted");
         return Promise.resolve(todos._id);
       } else {
+        console.log("not inserted");
         return Promise.resolve(null);
       }
 
