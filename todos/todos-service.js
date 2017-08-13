@@ -17,15 +17,31 @@ service.createTodos = function(uid, todos) {
   return nosql
     .get('todos')
     .then(collection => {
-      todos._id = new ObjectId();
       todos.uid = uid;
+      createTodosId(todos);
+      createTodoItemIds(todos.todoItems);
       console.log(todos);
       return collection.insertOne(todos);
     })
     .then(result => {
-      console.log(`insertedId -> ${result.insertedId}`);
-      return Promise.resolve(result.insertedId);
+      if (result.nInserted) {
+        return Promise.resolve(todos._id);
+      } else {
+        return Promise.resolve(null);
+      }
+
     });
+};
+
+let createTodosId = (todos) => {
+  todos._id = new ObjectId();
+};
+
+let createTodoItemIds = (todoItems) => {
+  return todoItems.map((x) => {
+    x._id = new ObjectId();
+    return x;
+  });
 };
 
 service.updateTodosName = function(uid, id, newName) {
