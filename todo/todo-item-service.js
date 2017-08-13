@@ -5,7 +5,6 @@ let service = {};
 
 service.addItem = function(todosId, item) {
   item._id = new ObjectId();
-  console.log(item);
   return nosql.get('todos')
     .then(collection => {
       return collection
@@ -13,7 +12,7 @@ service.addItem = function(todosId, item) {
           _id: ObjectId(todosId)
         }, {
           $set: {
-            "todos.todo-items": item
+            "todo-items": item
           }
         }, {
           upsert: true
