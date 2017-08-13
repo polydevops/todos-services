@@ -71,7 +71,6 @@ service.deleteTodos = function(uid, id) {
       });
     })
     .then(result => {
-      console.log('delete count -> ' + result.deletedCount);
       return Promise.resolve(result.deletedCount);
     });
 };
