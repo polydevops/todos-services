@@ -8,7 +8,7 @@ let controller = {};
 
 controller.createTodo = function(req, res, next) {
   service
-  .addItem(req.body.todosId, req.body.todo)
+  .addItem(req.body.todosId, req.body)
   .then(insertedId => {
     let response = new DataResponse({_id: insertedId});
     console.log(response);
