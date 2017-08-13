@@ -18,7 +18,6 @@ service.addItem = function(todosId, item) {
           upsert: true
         })
         .then(result => {
-          console.log(result);
           return (result.result.n) ? Promise.resolve(item._id) : Promise.resolve(0);
         });
     });

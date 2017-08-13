@@ -10,7 +10,9 @@ controller.createTodo = function(req, res, next) {
   service
   .addItem(req.body.todosId, req.body.todo)
   .then(insertedId => {
-    res.status(201).json(new DataResponse({_id: insertedId}));
+    let response = new DataResponse({_id: insertedId});
+    console.log(response);
+    res.status(201).json(response);
   })
   .catch(err => {
     let errorResponse = new ErrorResponse([new ServiceError("CreateTodoItemError", `Failed to create todo-item: ${err}`)]);
