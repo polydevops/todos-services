@@ -10,7 +10,7 @@ service.addItem = function(todosId, item) {
     .then(collection => {
       return collection
         .update({
-          "_id": ObjectId(todosId)
+          "_id": new ObjectId(todosId)
         }, {
           $push: {
             "todoItems": item
@@ -29,7 +29,7 @@ service.updateItem = function(todosId, item) {
     .then(collection => {
       return collection.update({
         "_id": todosId,
-        "todoItems._id": ObjectId(item._id)
+        "todoItems._id": new ObjectId(item._id)
       }, {
         $set: {
           "todo": item.todo,
@@ -48,7 +48,7 @@ service.deleteItem = function(itemId) {
   return nosql.get('todos')
   .then(collection => {
     return collection
-    .deleteOne({"todoItems._id": ObjectId(itemId)})
+    .deleteOne({"todoItems._id": new ObjectId(itemId)})
     .then(result => {
       return Promise.resolve(result.deletedCount);
     });

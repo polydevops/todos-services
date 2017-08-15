@@ -68,7 +68,7 @@ service.deleteTodos = function(uid, id) {
     .then(collection => {
       return collection.deleteOne({
         "uid": uid,
-        "_id": ObjectId(id)
+        "_id": new ObjectId(id)
       });
     })
     .then(result => {
