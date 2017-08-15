@@ -7,6 +7,7 @@ const ErrorResponse = require('../model/errors-response');
 let controller = {};
 
 controller.createTodo = function(req, res, next) {
+  console.log(req.body);
   service
   .addItem(req.body.todosId, req.body)
   .then(insertedId => {
