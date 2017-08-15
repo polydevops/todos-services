@@ -50,7 +50,7 @@ service.updateTodosName = function(uid, id, newName) {
     .then(collection => {
       return collection.updateOne({
         "uid": uid,
-        "_id": ObjectId(id)
+        "_id": new ObjectId(id)
       }, {
         $set: {
           "name": newName
@@ -58,6 +58,7 @@ service.updateTodosName = function(uid, id, newName) {
       });
     })
     .then(result => {
+      console.log(result.modifiedCount);
       return Promise.resolve(result.modifiedCount);
     });
 };
