@@ -58,8 +58,7 @@ service.updateTodosName = function(uid, id, newName) {
       });
     })
     .then(result => {
-      console.log(result);
-      return Promise.resolve(result.modifiedCount);
+      return Promise.resolve(result.result.n);
     });
 };
 
