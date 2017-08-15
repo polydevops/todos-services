@@ -11,7 +11,6 @@ controller.createTodo = function(req, res, next) {
   .addItem(req.params.id, req.body)
   .then(insertedId => {
     let response = new DataResponse({_id: insertedId});
-    console.log(response);
     res.status(201).json(response);
   })
   .catch(err => {

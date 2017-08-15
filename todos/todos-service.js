@@ -44,7 +44,6 @@ let createTodoItemIds = (todoItems) => {
 };
 
 service.updateTodosName = function(uid, id, newName) {
-  console.log(uid + id + newName);
   return nosql
     .get('todos')
     .then(collection => {
