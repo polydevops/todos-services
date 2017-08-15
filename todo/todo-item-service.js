@@ -28,7 +28,7 @@ service.updateItem = function(todosId, item) {
   return nosql.get('todos')
     .then(collection => {
       return collection.update({
-        "_id": todosId,
+        "_id": new ObjectId(todosId),
         "todoItems._id": new ObjectId(item._id)
       }, {
         $set: {
@@ -46,13 +46,15 @@ service.updateItem = function(todosId, item) {
 
 service.deleteItem = function(itemId) {
   return nosql.get('todos')
-  .then(collection => {
-    return collection
-    .deleteOne({"todoItems._id": new ObjectId(itemId)})
-    .then(result => {
-      return Promise.resolve(result.deletedCount);
+    .then(collection => {
+      return collection
+        .deleteOne({
+          "todoItems._id": new ObjectId(itemId)
+        })
+        .then(result => {
+          return Promise.resolve(result.deletedCount);
+        });
     });
-  });
 };
 
 module.exports = service;
