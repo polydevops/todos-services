@@ -11,7 +11,7 @@ router.post('/', function(req, res, next) {
   controller.createTodos(req, res, next);
 });
 
-router.post('/:id', function(req, res, next) {
+router.put('/:id', function(req, res, next) {
   controller.updateTodosName(req, res, next);
 });
 
