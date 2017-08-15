@@ -33,6 +33,8 @@ controller.createTodos = function(req, res, next) {
 };
 
 controller.updateTodosName = function(req, res, next) {
+  console.log(req.params.id);
+  console.log(req.body);
   todosService.updateTodosName(req.uid, req.params.id, req.body.name)
     .then(success => {
       if (success) res.status(204).end();
