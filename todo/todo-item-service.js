@@ -1,21 +1,21 @@
 let nosql = require('../data/nosql');
-let ObjectId = require('mongodb').ObjectId;
+let ObjectId = require('mongodb').ObjectID;
 
 let service = {};
 
 service.addItem = function(todosId, item) {
-  item._id = ObjectId();
+  item._id = new ObjectId();
   return nosql.get('todos')
     .then(collection => {
       return collection
         .update({
-          _id: todosId
+          "_id": new ObjectId(todosId)
         }, {
-          $set: {
-            "todos.todo-items": item
+          $push: {
+            "todoItems": item
           }
         }, {
-          upsert: true
+          upsert: false
         })
         .then(result => {
           return (result.result.n) ? Promise.resolve(item._id) : Promise.resolve(0);
@@ -27,14 +27,16 @@ service.updateItem = function(todosId, item) {
   return nosql.get('todos')
     .then(collection => {
       return collection.update({
-        _id: todosId
+        "_id": new ObjectId(todosId),
+        "todoItems._id": new ObjectId(item._id)
       }, {
         $set: {
-          "todos.todo-items": item
+          "todoItems.$.todo": item.todo,
+          "todoItems.$.isDone": item.isDone
         }
       }, {
         upsert: false
-      })
+      });
     })
     .then(result => {
       return Promise.resolve(result.result.n);
@@ -43,13 +45,15 @@ service.updateItem = function(todosId, item) {
 
 service.deleteItem = function(itemId) {
   return nosql.get('todos')
-  .then(collection => {
-    return collection
-    .deleteOne({_Id: itemId})
-    .then(result => {
-      return Promise.resolve(result.deletedCount);
-    })
-  })
-}
+    .then(collection => {
+      return collection
+        .deleteOne({
+          "todoItems._id": new ObjectId(itemId)
+        })
+        .then(result => {
+          return Promise.resolve(result.deletedCount);
+        });
+    });
+};
 
 module.exports = service;

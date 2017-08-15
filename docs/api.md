@@ -1,20 +1,35 @@
-# API #
+# API
 
-### Authorization ###
+## Authorization
+
 This application is authorized via a json web token (jwt) generated from firebase. That token is provided to the server as the following header:
 
 `Authorization: [insert_token]`
 
+## Spec
 
-### GET /todos ###
+For the response spec I chose a loose interpretation of the JSON API spec. It basically follows this format:
+
+`{ data: [ {object}, ... ] } // for arrays`
+`{ data: {object} } // for objects`
+
+{
+  errors: [
+   {title: "AuthError", detail: "Failed to authorize user: <some_error>"}
+   ...
+  ]
+}
+
+## GET /todos
 
 Description:
+
 - Fetches all of the 'todos' associated with a user (user is identified by token in header)
 
 Response:
+
 ```
-{
-  todos: [
+data: [
     {
       _id: 1,
       name: "title",
@@ -28,19 +43,18 @@ Response:
       ]
     },
     ...
-  ]
-}
 ```
 
-### POST /todos ###
+## POST /todos
 
 Description:
+
 - Creates a new todos
 
 Payload:
+
 ```
 {
-  _id: 1,
   name: "title",
   todo-items: [
     {
@@ -55,19 +69,23 @@ Payload:
 ```
 
 Response:
+
 ```
-{id: 1}
+data: {_id: 1}
 ```
 
-### POST /todos/:id ###
+## POST /todos/:id
 
 Description:
+
 - Updates an existing todos name
 
 Params:
+
 - :id - the id of the todos to update
 
 Payload
+
 ```
 {
   _id: 1,
@@ -84,29 +102,35 @@ Payload
 ```
 
 Response:
+
 ```
 200 (OK)
 ```
 
-### DELETE /todos/:id ###
+## DELETE /todos/:id
 
 Description:
+
 - Deletes an existing todos
 
 Params:
+
 - :id - the id of the todos
 
 Response:
+
 ```
 200 (OK)
 ```
 
-### POST /todo ###
+## POST /todo
 
 Description:
+
 - Creates a new todo
 
 Payload:
+
 ```
 {
   todosId: 1,
@@ -118,19 +142,23 @@ Payload:
 ```
 
 Response:
+
 ```
-{id: 201}
+data: {id: 201}
 ```
 
-### POST /todo/:id ###
+## POST /todo/:id
 
 Description:
+
 - Updates an existing todo
 
 Params:
+
 - :id - the id of the todo
 
 Payload:
+
 ```
 {
   todosId: 1,
@@ -143,19 +171,23 @@ Payload:
 ```
 
 Response:
+
 ```
 200 (OK)
 ```
 
-### DELETE /todo/:id ###
+## DELETE /todo/:id
 
 Description:
+
 - Deletes an existing todo
 
 Params:
+
 - :id - the id of the todo
 
 Response:
+
 ```
 200 (OK)
 ```
