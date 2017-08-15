@@ -32,8 +32,8 @@ service.updateItem = function(todosId, item) {
         "todoItems._id": new ObjectId(item._id)
       }, {
         $set: {
-          "todo": item.todo,
-          "isDone": item.isDone
+          "todoItems.todo": item.todo,
+          "todoItems.isDone": item.isDone
         }
       }, {
         upsert: false
