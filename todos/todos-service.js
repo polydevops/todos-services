@@ -48,7 +48,7 @@ service.updateTodosName = function(uid, id, newName) {
   return nosql
     .get('todos')
     .then(collection => {
-      return collection.updateOne({
+      return collection.update({
         "uid": uid,
         "_id": new ObjectId(id)
       }, {
