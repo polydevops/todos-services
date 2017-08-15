@@ -22,7 +22,7 @@ controller.createTodo = function(req, res, next) {
 
 controller.updateTodo = function(req, res, next) {
   service
-  .updateItem(req.params.id, req.body.todo)
+  .updateItem(req.params.id, req.body)
   .then(success => {
     if (success) {
       res.status(200).end();
